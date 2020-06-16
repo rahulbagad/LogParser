@@ -5,7 +5,7 @@ class LogMessage:
         self.message = message
 
     def __str__(self):
-        return " ".join(["LogMessage", self.message_type, str(self.time_stamp), self.message])
+        return " ".join(["LogMessage",  "(" + self.message_type + ")" if "Error" in self.message_type else self.message_type, str(self.time_stamp), self.message])
 
 
 class UnknownMessage:

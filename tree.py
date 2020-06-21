@@ -1,4 +1,6 @@
 from typing import List
+
+from constants import UNKNOWN_MSG
 from message import Message
 
 
@@ -19,7 +21,7 @@ class MessageTree:
     @staticmethod
     def insert(tree: 'MessageTree', log_message: Message):
         tree_root_copy = MessageTree._copy(tree.get_root())
-        if log_message.category is "Unknown":
+        if log_message.category is UNKNOWN_MSG:
             return tree
         if tree_root_copy:
             MessageTree._insert(log_message=log_message, node=tree_root_copy)

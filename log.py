@@ -27,6 +27,5 @@ def in_order_traversal(tree: MessageTree) -> List[Message]:
 def what_went_wrong(messages: List[Message]) -> List[str]:
     tree = build_tree(log_messages=messages)
     sorted_messages = tree.get_in_order_tree_traversal()
-    return list(
-        filter(lambda x: "Error" in x and int(x.split(" ")[1]) > 50,
-               list(map(lambda x: x.message_type, sorted_messages))))
+    errors = list(filter(lambda x: "Error" in x.message_type and int(x.message_type.split(" ")[1]) > 50, sorted_messages))
+    return list(map(lambda x: x.message, errors))

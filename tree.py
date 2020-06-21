@@ -1,4 +1,5 @@
 from typing import List
+
 from messages import LogMessage
 
 
@@ -10,20 +11,19 @@ class Node:
 
 
 class MessageTree:
-    def __init__(self):
-        self.root = None
+    def __init__(self, root: Node):
+        self.root = root
 
     def get_root(self):
         return self.root
 
-    def build_tree(self, log_messages: List[LogMessage]):
-        list(map(self.insert, log_messages))
-
-    def insert(self, log_message: LogMessage):
-        if self.root:
-            self._insert(log_message=log_message, node=self.root)
+    def insert(self, tree: 'MessageTree', log_message: LogMessage):
+        tree_root_copy = self._copy(tree.get_root())
+        if tree_root_copy:
+            self._insert(log_message=log_message, node=tree_root_copy)
         else:
-            self.root = Node(log_message)
+            tree_root_copy = Node(log_message)
+        return MessageTree(tree_root_copy)
 
     def _insert(self, log_message: LogMessage, node: Node):
         if log_message.time_stamp < node.log_message.time_stamp:
@@ -40,11 +40,19 @@ class MessageTree:
     def get_in_order_tree_traversal(self) -> List[LogMessage]:
         accumulator = []
         if self.root:
-            self._print_tree_in_order(node=self.root, accumulator=accumulator)
+            self._in_order(node=self.root, accumulator=accumulator)
         return accumulator
 
-    def _print_tree_in_order(self, node: Node, accumulator: LogMessage):
+    def _in_order(self, node: Node, accumulator: LogMessage):
         if node:
-            self._print_tree_in_order(node=node.left, accumulator=accumulator)
+            self._in_order(node=node.left, accumulator=accumulator)
             accumulator.append(node.log_message)
-            self._print_tree_in_order(node=node.right, accumulator=accumulator)
+            self._in_order(node=node.right, accumulator=accumulator)
+
+    def _copy(self, root_node: Node):
+        if root_node is None:
+            return None
+        new_node = Node(root_node.log_message)
+        new_node.left = self._copy(root_node.left)
+        new_node.right = self._copy(root_node.right)
+        return new_node

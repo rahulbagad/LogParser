@@ -1,6 +1,6 @@
 import sys
 from parser import parse_message
-from messages import LogMessage, UnknownMessage
+from messages import LogMessage
 from typing import List
 from tree import MessageTree
 
@@ -16,8 +16,9 @@ def parse(file_path: str, no_of_lines: int) -> List[LogMessage]:
 
 
 def build_tree(log_messages: List[LogMessage]) -> MessageTree:
-    tree = MessageTree()
-    tree.build_tree(log_messages)
+    tree = MessageTree(None)
+    for msg in log_messages:
+        tree = tree.insert(tree, msg)
     return tree
 
 
@@ -26,7 +27,8 @@ def in_order_traversal(tree: MessageTree) -> List[LogMessage]:
 
 
 def what_went_wrong(messages: List[LogMessage]) -> List[str]:
-    return list(filter(lambda x: "Error" in x and int(x.split(" ")[1]) > 50, list(map(lambda x: x.message_type, messages))))
+    return list(
+        filter(lambda x: "Error" in x and int(x.split(" ")[1]) > 50, list(map(lambda x: x.message_type, messages))))
 
 
 args = sys.argv

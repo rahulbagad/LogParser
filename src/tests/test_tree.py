@@ -1,9 +1,9 @@
 import unittest
 
-from constants import UNKNOWN_MSG, INFO, WARNING, LOG_MSG, ERROR
-from message import Message
-from log import build_tree, in_order_traversal
-from tree import MessageTree
+from src.constant import UNKNOWN_MSG, INFO, WARNING, LOG_MSG, ERROR
+from src.message import Message
+from src.log import build_tree, in_order_traversal
+from src.tree import MessageTree
 
 
 class TestBuildTree(unittest.TestCase):

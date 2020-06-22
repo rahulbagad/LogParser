@@ -1,8 +1,8 @@
 import unittest
 
-from constants import INFO, WARNING, LOG_MSG, ERROR
-from log import what_went_wrong
-from message import Message
+from src.constant import INFO, WARNING, LOG_MSG, ERROR
+from src.log import what_went_wrong
+from src.message import Message
 
 
 class TestWhatWentWrong(unittest.TestCase):

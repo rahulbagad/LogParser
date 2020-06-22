@@ -1,6 +1,6 @@
 from typing import Optional
 
-from constants import LOG_MSG
+from src.constant import LOG_MSG
 
 
 class Message:

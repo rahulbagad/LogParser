@@ -1,5 +1,5 @@
 import sys
-from log import parse, build_tree, what_went_wrong, in_order_traversal
+from src.log import parse, build_tree, what_went_wrong, in_order_traversal
 
 args = sys.argv
 lines_to_parse = int(args[1])

@@ -1,7 +1,7 @@
 from typing import List
 
-from constants import UNKNOWN_MSG
-from message import Message
+from src.constant import UNKNOWN_MSG
+from src.message import Message
 
 
 class Node:

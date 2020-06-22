@@ -1,13 +1,13 @@
 import unittest
 
-from constants import UNKNOWN_MSG, LOG_MSG, INFO
-from log import parse
+from src.constant import LOG_MSG, INFO, UNKNOWN_MSG
+from src.log import parse
 
 
 class TestParse(unittest.TestCase):
 
     def test_parse_log_file(self):
-        messages = parse("tests/test-sample.log", 10)
+        messages = parse("src/tests/test-sample.log", 10)
         assert len(messages) == 10
 
         log_messages = self._get_by_category(messages, LOG_MSG)

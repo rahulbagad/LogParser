@@ -1,7 +1,7 @@
-from parser import parse_message
-from message import Message
+from src.parser import parse_message
+from src.message import Message
 from typing import List
-from tree import MessageTree
+from src.tree import MessageTree
 
 
 def parse(file_path: str, no_of_lines: int) -> List[Message]:

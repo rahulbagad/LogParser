@@ -1,5 +1,5 @@
-from constants import UNKNOWN_MSG, INFO, WARNING, LOG_MSG, ERROR
-from message import Message
+from src.constant import UNKNOWN_MSG, INFO, WARNING, LOG_MSG, ERROR
+from src.message import Message
 from typing import List
 
 message_code_type_mapping = {'I': INFO, 'W': WARNING, 'E': ERROR}

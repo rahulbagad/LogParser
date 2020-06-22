@@ -1,5 +1,5 @@
 # LogParser
-- Code is written using python3
+- Code is written in python3
 
 - Install pytest for running unit tests `pip install -r requirements.txt`
 

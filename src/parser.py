@@ -7,7 +7,7 @@ message_code_type_mapping = {'I': INFO, 'W': WARNING, 'E': ERROR}
 
 def parse_message(log_line: str) -> Message:
     tokens = log_line.split(" ")
-    return Message(category=UNKNOWN_MSG, message=log_line) if is_unknown(tokens) else get_log_message(tokens=tokens)
+    return Message(category=UNKNOWN_MSG, message=log_line.strip()) if is_unknown(tokens) else get_log_message(tokens=tokens)
 
 
 def is_unknown(tokens: List[str]) -> bool:

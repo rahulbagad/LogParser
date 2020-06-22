@@ -1,5 +1,5 @@
 UNKNOWN_MSG = "Unknown"
 LOG_MSG = "LogMessage"
 INFO = "Info"
-WARNING = "WARNING"
+WARNING = "Warning"
 ERROR = "Error {err_code:d}"
